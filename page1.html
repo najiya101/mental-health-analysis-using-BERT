@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Support Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            font-size: 1.5em;
+        }
+
+        .chat-container {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .chat-log {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 70%;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: #d1e7dd;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background-color: #f8d7da;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .chat-input button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .chat-input button:hover {
+            background-color: #45a049;
+        }
+
+        .personal-information {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .personal-information input, .personal-information textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .personal-information button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .personal-information button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    Mental Health Support Chatbot
+</header>
+
+<div class="chat-container">
+    <div class="chat-log" id="chatLog">
+        <!-- Chat messages will appear here -->
+    </div>
+
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Type your message here...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<div class="personal-information">
+    <h3>Personal Details</h3>
+
+    <!-- Name Field -->
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" placeholder="Enter your full name">
+
+    <!-- Contact Number Fields -->
+    <label for="contactNumber1">Contact Number 1:</label>
+    <input type="text" id="contactNumber1" placeholder="Enter your contact number">
+
+    <label for="contactNumber2">Contact Number 2:</label>
+    <input type="text" id="contactNumber2" placeholder="Enter your second contact number">
+
+    <label for="contactNumber3">Contact Number 3:</label>
+    <input type="text" id="contactNumber3" placeholder="Enter your third contact number">
+
+    <!-- Email Field -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter your email address">
+
+    <!-- Age Field -->
+    <label for="age">Age:</label>
+    <input type="number" id="age" placeholder="Enter your age">
+
+    <!-- Address Field -->
+    <label for="address">Address:</label>
+    <textarea id="address" rows="3" placeholder="Enter your address"></textarea>
+
+    <!-- Attention Question -->
+    <label for="attentQuestion">Attention Question:</label>
+    <textarea id="attentQuestion" rows="3" placeholder="Enter any specific question or concern"></textarea>
+
+    <!-- Submit Button -->
+    <button onclick="submitAdditionalInfo()">Submit</button>
+</div>
+
+<script>
+    function sendMessage() {
+        const userInput = document.getElementById('userInput');
+        const chatLog = document.getElementById('chatLog');
+
+        if (userInput.value.trim() === '') return;
+
+        // Add user message to chat log
+        const userMessage = document.createElement('div');
+        userMessage.className = 'chat-message user-message';
+        userMessage.textContent = userInput.value;
+        chatLog.appendChild(userMessage);
+
+        // Simulate bot response
+        const botMessage = document.createElement('div');
+        botMessage.className = 'chat-message bot-message';
+        botMessage.textContent = `You said: "${userInput.value}". How can I assist further?`;
+        chatLog.appendChild(botMessage);
+
+        // Clear input field
+        userInput.value = '';
+
+        // Scroll to the bottom of the chat log
+        chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function submitAdditionalInfo() {
+        const fullName = document.getElementById('fullName').value;
+        const contactNumber1 = document.getElementById('contactNumber1').value;
+        const email = document.getElementById('email').value;
+        const age = document.getElementById('age').value;
+        const address = document.getElementById('address').value;
+        const attentQuestion = document.getElementById('attentQuestion').value;
+
+        if (!fullName.trim() || !contactNumber1.trim() || !email.trim() || !age.trim()) {
+            alert('Please fill in all required fields (Name, Contact Number, Email, Age).');
+            return;
+        }
+
+        console.log('Full Name:', fullName);
+        console.log('Contact Number 1:', contactNumber1);
+        console.log('Email:', email);
+        console.log('Age:', age);
+        console.log('Address:', address);
+        console.log('Attention Question:', attentQuestion);
+
+        alert('Your information has been submitted successfully!');
+    }
+</script>
+
+</body>
+</html>
