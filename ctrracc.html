@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #84a9ac, #204051);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .create-account-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+        .create-account-container h2 {
+            margin-bottom: 20px;
+            color: #204051;
+        }
+        .create-account-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .create-account-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3b6978;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .create-account-container button:hover {
+            background-color: #204051;
+        }
+        .create-account-container a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #3b6978;
+            font-size: 14px;
+        }
+        .create-account-container a:hover {
+            color: #204051;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #204051;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="create-account-container">
+        <h2>Create Account</h2>
+        <!-- Form to create account, POST method for submitting data -->
+        <form action="create-account-action.html" method="POST">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
+            <form action="page1.html" method="GET">
+            <button onclick="">Submit</button>
+            
+        </form>
+        
+        <a href="login.html">Already have an account? Login here</a>
+        <a href="/forgot-password">Forgot Password?</a>
+    </div>
+</body>
+</html>

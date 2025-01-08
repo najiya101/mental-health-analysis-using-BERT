@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depression Assessment</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f0f4f8; /* Light greyish background */
+            color: #333; /* Standard dark text color */
+            padding: 40px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        h1 {
+            font-size: 2.8em;
+            color: #2c3e50; /* Dark blue for the title */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-container {
+            display: none;
+            background: #ffffff; /* White background for the form container */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.3s ease-in-out;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .question label {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #34495e; /* Darker greyish-blue for the text */
+        }
+
+        .question input[type="radio"] {
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: #27ae60; /* Green background for buttons */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #2ecc71; /* Lighter green on hover */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .question input[type="radio"] {
+            accent-color: #27ae60; /* Green accent color for radio buttons */
+        }
+
+        .question input[type="radio"]:checked {
+            background-color: #2ecc71; /* Highlight selected radio button */
+        }
+
+        .form-container p {
+            font-size: 1em;
+            font-style: italic;
+            color: #95a5a6; /* Light grey text for instructions */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Depression Assessment</h1>
+
+    <!-- Question 1 -->
+    <div id="form-container-1" class="form-container active">
+        <div class="question">
+            <label for="q1">How often do you feel sad? *</label><br>
+            <input type="radio" id="q1_1" name="q1" value="I do not feel sad." required> I do not feel sad.<br>
+            <input type="radio" id="q1_2" name="q1" value="I feel sad."> I feel sad.<br>
+            <input type="radio" id="q1_3" name="q1" value="I am sad all the time and I can't snap out of it."> I am sad all the time and I can't snap out of it.<br>
+            <input type="radio" id="q1_4" name="q1" value="I am so sad and unhappy that I can't stand it."> I am so sad and unhappy that I can't stand it.<br>
+        </div>
+        <button onclick="nextQuestion(1)">Next</button>
+    </div>
+
+    <!-- Question 2 -->
+    <div id="form-container-2" class="form-container">
+        <div class="question">
+            <label for="q2">How do you feel about the future?</label><br>
+            <input type="radio" id="q2_1" name="q2" value="I am not particularly discouraged about the future."> I am not particularly discouraged about the future.<br>
+            <input type="radio" id="q2_2" name="q2" value="I feel discouraged about the future."> I feel discouraged about the future.<br>
+            <input type="radio" id="q2_3" name="q2" value="I feel I have nothing to look forward to."> I feel I have nothing to look forward to.<br>
+            <input type="radio" id="q2_4" name="q2" value="I feel the future is hopeless and that things cannot improve."> I feel the future is hopeless and that things cannot improve.<br>
+        </div>
+        <button onclick="nextQuestion(2)">Next</button>
+    </div>
+
+    <!-- Question 3 -->
+    <div id="form-container-3" class="form-container">
+        <div class="question">
+            <label for="q3">How do you perceive your accomplishments? *</label><br>
+            <input type="radio" id="q3_1" name="q3" value="I do not feel like a failure."> I do not feel like a failure.<br>
+            <input type="radio" id="q3_2" name="q3" value="I feel I have failed more than the average person."> I feel I have failed more than the average person.<br>
+            <input type="radio" id="q3_3" name="q3" value="As I look back on my life, all I can see is a lot of failures."> As I look back on my life, all I can see is a lot of failures.<br>
+            <input type="radio" id="q3_4" name="q3" value="I feel I am a complete failure as a person."> I feel I am a complete failure as a person.<br>
+        </div>
+        <button onclick="nextQuestion(3)">Next</button>
+    </div>
+
+    <!-- Question 4 -->
+    <div id="form-container-4" class="form-container">
+        <div class="question">
+            <label for="q4">Do you enjoy activities as much as you used to?</label><br>
+            <input type="radio" id="q4_1" name="q4" value="I get as much satisfaction out of things as I used to."> I get as much satisfaction out of things as I used to.<br>
+            <input type="radio" id="q4_2" name="q4" value="I don't enjoy things the way I used to."> I don't enjoy things the way I used to.<br>
+            <input type="radio" id="q4_3" name="q4" value="I don't get real satisfaction out of anything anymore."> I don't get real satisfaction out of anything anymore.<br>
+            <input type="radio" id="q4_4" name="q4" value="I am dissatisfied or bored with everything."> I am dissatisfied or bored with everything.<br>
+        </div>
+        <button onclick="nextQuestion(4)">Next</button>
+    </div>
+
+    <!-- Question 5 -->
+    <div id="form-container-5" class="form-container">
+        <div class="question">
+            <label for="q5">Do you feel guilty?</label><br>
+            <input type="radio" id="q5_1" name="q5" value="I don't feel particularly guilty."> I don't feel particularly guilty.<br>
+            <input type="radio" id="q5_2" name="q5" value="I feel guilty a good part of the time."> I feel guilty a good part of the time.<br>
+            <input type="radio" id="q5_3" name="q5" value="I feel quite guilty most of the time."> I feel quite guilty most of the time.<br>
+            <input type="radio" id="q5_4" name="q5" value="I feel guilty all the time."> I feel guilty all the time.<br>
+        </div>
+        <button onclick="nextQuestion(5)">Next</button>
+    </div>
+
+    <!-- Add more questions similarly -->
+         <!-- Question 6 -->
+    <div id="form-container-6" class="form-container">
+        <div class="question">
+            <label for="q6">Do you feel like you're being punished?</label><br>
+            <input type="radio" id="q6_1" name="q6" value="I don't feel I am being punished."> I don't feel I am being punished.<br>
+            <input type="radio" id="q6_2" name="q6" value="I feel I may be punished."> I feel I may be punished.<br>
+            <input type="radio" id="q6_3" name="q6" value="I expect to be punished."> I expect to be punished.<br>
+            <input type="radio" id="q6_4" name="q6" value="I feel I am being punished."> I feel I am being punished.<br>
+        </div>
+        <button onclick="nextQuestion(6)">Next</button>
+    </div>
+
+    <!-- Question 7 -->
+    <div id="form-container-7" class="form-container">
+        <div class="question">
+            <label for="q7">How do you feel about yourself?</label><br>
+            <input type="radio" id="q7_1" name="q7" value="I don't feel disappointed in myself."> I don't feel disappointed in myself.<br>
+            <input type="radio" id="q7_2" name="q7" value="I am disappointed in myself."> I am disappointed in myself.<br>
+            <input type="radio" id="q7_3" name="q7" value="I am disgusted with myself."> I am disgusted with myself.<br>
+            <input type="radio" id="q7_4" name="q7" value="I hate myself."> I hate myself.<br>
+        </div>
+        <button onclick="nextQuestion(7)">Next</button>
+    </div>
+
+    <!-- Question 8 -->
+    <div id="form-container-8" class="form-container">
+        <div class="question">
+            <label for="q8">Do you blame yourself for problems? *</label><br>
+            <input type="radio" id="q8_1" name="q8" value="I don't feel I am any worse than anybody else."> I don't feel I am any worse than anybody else.<br>
+            <input type="radio" id="q8_2" name="q8" value="I am critical of myself for my weaknesses or mistakes."> I am critical of myself for my weaknesses or mistakes.<br>
+            <input type="radio" id="q8_3" name="q8" value="I blame myself all the time for my faults."> I blame myself all the time for my faults.<br>
+            <input type="radio" id="q8_4" name="q8" value="I blame myself for everything bad that happens."> I blame myself for everything bad that happens.<br>
+        </div>
+        <button onclick="nextQuestion(8)">Next</button>
+    </div>
+
+    <!-- Question 9 -->
+    <div id="form-container-9" class="form-container">
+        <div class="question">
+            <label for="q9">Do you have thoughts of self-harm? *</label><br>
+            <input type="radio" id="q9_1" name="q9" value="I don't have any thoughts of killing myself."> I don't have any thoughts of killing myself.<br>
+            <input type="radio" id="q9_2" name="q9" value="I have thoughts of killing myself, but I would not carry them out."> I have thoughts of killing myself, but I would not carry them out.<br>
+            <input type="radio" id="q9_3" name="q9" value="I would like to kill myself."> I would like to kill myself.<br>
+            <input type="radio" id="q9_4" name="q9" value="I would kill myself if I had the chance."> I would kill myself if I had the chance.<br>
+        </div>
+        <button onclick="nextQuestion(9)">Next</button>
+    </div>
+ <!-- Question 10 -->
+ <div id="form-container-10" class="form-container">
+    <div class="question">
+        <label for="q10">How often do you cry? *</label><br>
+        <input type="radio" id="q10_1" name="q10" value="I don't cry any more than usual."> I don't cry any more than usual.<br>
+        <input type="radio" id="q10_2" name="q10" value="I cry more now than I used to."> I cry more now than I used to.<br>
+        <input type="radio" id="q10_3" name="q10" value="I cry all the time now."> I cry all the time now.<br>
+        <input type="radio" id="q10_4" name="q10" value="I used to be able to cry, but now I can't cry even though I want to."> I used to be able to cry, but now I can't cry even though I want to.<br>
+    </div>
+    <button onclick="nextQuestion(10)">Next</button>
+</div>
+
+<!-- Question 11 -->
+<div id="form-container-11" class="form-container">
+    <div class="question">
+        <label for="q11">Do you feel irritated?</label><br>
+        <input type="radio" id="q11_1" name="q11" value="I am no more irritated by things than I ever was."> I am no more irritated by things than I ever was.<br>
+        <input type="radio" id="q11_2" name="q11" value="I am slightly more irritated now than usual."> I am slightly more irritated now than usual.<br>
+        <input type="radio" id="q11_3" name="q11" value="I am quite annoyed or irritated a good deal of the time."> I am quite annoyed or irritated a good deal of the time.<br>
+        <input type="radio" id="q11_4" name="q11" value="I feel irritated all the time."> I feel irritated all the time.<br>
+    </div>
+    <button onclick="nextQuestion(11)">Next</button>
+</div>
+
+<!-- Question 12 -->
+<div id="form-container-12" class="form-container">
+    <div class="question">
+        <label for="q12">Have you lost interest in others?</label><br>
+        <input type="radio" id="q12_1" name="q12" value="I have not lost interest in other people."> I have not lost interest in other people.<br>
+        <input type="radio" id="q12_2" name="q12" value="I am less interested in other people than I used to be."> I am less interested in other people than I used to be.<br>
+        <input type="radio" id="q12_3" name="q12" value="I have lost most of my interest in other people."> I have lost most of my interest in other people.<br>
+        <input type="radio" id="q12_4" name="q12" value="I have lost all of my interest in other people."> I have lost all of my interest in other people.<br>
+    </div>
+    <button onclick="nextQuestion(12)">Next</button>
+</div>
+
+<!-- Question 13 -->
+<div id="form-container-13" class="form-container">
+    <div class="question">
+        <label for="q13">How well do you make decisions?</label><br>
+        <input type="radio" id="q13_1" name="q13" value="I make decisions about as well as I ever could."> I make decisions about as well as I ever could.<br>
+        <input type="radio" id="q13_2" name="q13" value="I put off making decisions more than I used to."> I put off making decisions more than I used to.<br>
+        <input type="radio" id="q13_3" name="q13" value="I have greater difficulty in making decisions than before."> I have greater difficulty in making decisions than before.<br>
+        <input type="radio" id="q13_4" name="q13" value="I can't make decisions at all anymore."> I can't make decisions at all anymore.<br>
+    </div>
+    <button onclick="nextQuestion(13)">Next</button>
+</div>
+    <!-- Question 14 -->
+    <div id="form-container-14" class="form-container">
+        <div class="question">
+            <label for="q14">Do you feel worried or anxious about things?</label><br>
+            <input type="radio" id="q14_1" name="q14" value="I don't feel worried or anxious."> I don't feel worried or anxious.<br>
+            <input type="radio" id="q14_2" name="q14" value="I feel a little worried or anxious sometimes."> I feel a little worried or anxious sometimes.<br>
+            <input type="radio" id="q14_3" name="q14" value="I feel worried or anxious a lot of the time."> I feel worried or anxious a lot of the time.<br>
+            <input type="radio" id="q14_4" name="q14" value="I feel worried or anxious all the time."> I feel worried or anxious all the time.<br>
+        </div>
+        <button onclick="nextQuestion(14)">Next</button>
+    </div>
+    <!-- Question 15 -->
+    <div id="form-container-15" class="form-container">
+        <div class="question">
+            <label for="q15">Do you have trouble concentrating?</label><br>
+            <input type="radio" id="q15_1" name="q15" value="I can concentrate just as well as I used to."> I can concentrate just as well as I used to.<br>
+            <input type="radio" id="q15_2" name="q15" value="I can't concentrate as well as I used to."> I can't concentrate as well as I used to.<br>
+            <input type="radio" id="q15_3" name="q15" value="I have trouble focusing on anything."> I have trouble focusing on anything.<br>
+            <input type="radio" id="q15_4" name="q15" value="I can't concentrate at all."> I can't concentrate at all.<br>
+        </div>
+        <button onclick="nextQuestion(15)">Next</button>
+    </div>
+
+    <!-- Question 16 -->
+    <div id="form-container-16" class="form-container">
+        <div class="question">
+            <label for="q16">Do you feel restless or fidgety?</label><br>
+            <input type="radio" id="q16_1" name="q16" value="I don't feel restless."> I don't feel restless.<br>
+            <input type="radio" id="q16_2" name="q16" value="I feel a little restless sometimes."> I feel a little restless sometimes.<br>
+            <input type="radio" id="q16_3" name="q16" value="I feel restless most of the time."> I feel restless most of the time.<br>
+            <input type="radio" id="q16_4" name="q16" value="I feel restless all the time."> I feel restless all the time.<br>
+        </div>
+        <button onclick="nextQuestion(16)">Next</button>
+    </div>
+
+    <!-- Question 17 -->
+    <div id="form-container-17" class="form-container">
+        <div class="question">
+            <label for="q17">Do you feel tired or low in energy?</label><br>
+            <input type="radio" id="q17_1" name="q17" value="I don't feel tired or low in energy."> I don't feel tired or low in energy.<br>
+            <input type="radio" id="q17_2" name="q17" value="I feel tired or low in energy sometimes."> I feel tired or low in energy sometimes.<br>
+            <input type="radio" id="q17_3" name="q17" value="I feel tired or low in energy most of the time."> I feel tired or low in energy most of the time.<br>
+            <input type="radio" id="q17_4" name="q17" value="I feel tired or low in energy all the time."> I feel tired or low in energy all the time.<br>
+        </div>
+        <button onclick="nextQuestion(17)">Next</button>
+    </div>
+
+    <!-- Question 18 -->
+    <div id="form-container-18" class="form-container">
+        <div class="question">
+            <label for="q18">Do you feel hopeless or helpless?</label><br>
+            <input type="radio" id="q18_1" name="q18" value="I don't feel hopeless or helpless."> I don't feel hopeless or helpless.<br>
+            <input type="radio" id="q18_2" name="q18" value="I feel hopeless or helpless sometimes."> I feel hopeless or helpless sometimes.<br>
+            <input type="radio" id="q18_3" name="q18" value="I feel hopeless or helpless often."> I feel hopeless or helpless often.<br>
+            <input type="radio" id="q18_4" name="q18" value="I feel hopeless or helpless all the time."> I feel hopeless or helpless all the time.<br>
+        </div>
+        <button onclick="nextQuestion(18)">Next</button>
+    </div>
+
+    <!-- Question 19 -->
+    <div id="form-container-19" class="form-container">
+        <div class="question">
+            <label for="q19">Do you feel that your physical health has been affected by your mood?</label><br>
+            <input type="radio" id="q19_1" name="q19" value="I don't feel my physical health is affected by my mood."> I don't feel my physical health is affected by my mood.<br>
+            <input type="radio" id="q19_2" name="q19" value="My physical health is slightly affected by my mood."> My physical health is slightly affected by my mood.<br>
+            <input type="radio" id="q19_3" name="q19" value="My physical health is somewhat affected by my mood."> My physical health is somewhat affected by my mood.<br>
+            <input type="radio" id="q19_4" name="q19" value="My physical health is greatly affected by my mood."> My physical health is greatly affected by my mood.<br>
+        </div>
+        <button onclick="nextQuestion(19)">Next</button>
+    </div>
+
+    <!-- Question 20 -->
+    <div id="form-container-20" class="form-container">
+        <div class="question">
+            <label for="q20">Do you feel like life is not worth living?</label><br>
+            <input type="radio" id="q20_1" name="q20" value="I feel life is worth living."> I feel life is worth living.<br>
+            <input type="radio" id="q20_2" name="q20" value="I feel life is less worth living than before."> I feel life is less worth living than before.<br>
+            <input type="radio" id="q20_3" name="q20" value="I feel life is not worth living."> I feel life is not worth living.<br>
+            <input type="radio" id="q20_4" name="q20" value="I feel like life has no purpose."> I feel like life has no purpose.<br>
+        </div>
+        
+     <form action="page1.html" method="GET">
+      <button onclick="submitForm()">Submit</button>
+    </form>
+    <script>
+        let currentQuestion = 1;
+
+        function nextQuestion(questionNumber) {
+            document.getElementById(`form-container-${questionNumber}`).classList.remove('active');
+            currentQuestion++;
+            document.getElementById(`form-container-${currentQuestion}`).classList.add('active');
+        }
+
+        function submitForm() {
+            alert('Thank you for filling out the form!');
+        }
+    </script>
+     <a href="login.html">Help? </a>
+
+</body>
+</html>
